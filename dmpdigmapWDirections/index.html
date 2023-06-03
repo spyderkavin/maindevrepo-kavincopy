@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <title>MHS Directions</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #instructions {
+      position: absolute;
+      margin: 1%;
+      width: 20%;
+      top: 0;
+      bottom: 20%;
+      padding: 20px;
+      background-color: #FFFFFF;
+      overflow-y: scroll;
+      font-family: sans-serif;
+      font-color: #00FF00;
+    }
+
+    #toggleInstructions {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1;
+          
+    }
+    #eta {
+      position: absolute;
+      margin: 1%;
+      right: 1%;
+      width: 6%;
+      top: 60px;
+      bottom: 50%;
+      padding: 20px;
+      background-color: #d0eef2;
+      overflow-y: scroll;
+      font-family: sans-serif;
+      font-color: #00FF00;
+    }
+    
+    #logo {
+      right: 10%;
+      top: 50%;
+      background-color: #FFFFFF;
+      
+    } 
+
+  
+  </style>
+</head>
+
+<body>
+  <div id='map'></div>
+  <div id="instructions" style="display: none;"></div>
+  <button id="toggleInstructions", label="instructions.innerHTML">Toggle Directions</button>
+  <div id='eta', label="eta.innerHTML"></div>
+  <div id='logo'></div>
+
+  <script>
+    const instructions = document.getElementById("instructions");
+    const toggleButton = document.getElementById("toggleInstructions");
+
+    function setInstructions(data) {
+      const steps = data.legs[0].steps;
+      let tripInstructions = "";
+      for (const step of steps) {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 35
+      )} minutes  </strong></p><ol>${tripInstructions}</ol>`;
+      eta.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 35
+      )} minutes  </strong></p>`;
+    }
+
+    toggleButton.addEventListener("click", () => {
+      instructions.style.display = instructions.style.display === "none" ? "block" : "none";
+    });
+
+    
+    
+  </script>
+  </div>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3B5ZGVya2F2aW4iLCJhIjoiY2xoazI5czc5MG5uZzNkdGxmMWpmbWs3NCJ9.m62PDpaOA-xh6g45wq9-PA';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg',
+      center: [-121.900686, 37.451186], // starting position
+      zoom: 16.50
+    });
+    // set the bounds of the map
+    const bounds = [
+      [-122.103198, 36.450507],
+      [-121.303198, 37.550507]
+    ];
+    map.setMaxBounds(bounds);
+
+    // an arbitrary start will always be the same
+    // only the end or destination will change
+    const start = [-121.900686, 37.451186];
+
+    // create a function to make a directions request
+    async function getRoute(end) {
+      // make a directions request using cycling profile
+      // an arbitrary start will always be the same
+      // only the end or destination will change
+      const query = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`,
+        {method: "GET"}
+      );
+      const json = await query.json();
+      const data = json.routes[0];
+
+      // set the instructions
+      setInstructions(data);
+
+      const route = data.geometry.coordinates;
+      const geojson = {
+        type: "Feature",
+        properties: {},
+        geometry: {
+          type: "LineString",
+          coordinates: route
+        }
+      };
+      // if the route already exists on the map, we'll reset it using setData
+      if (map.getSource('route')) {
+        map.getSource('route').setData(geojson);
+      }
+      // otherwise, we'll make a new request
+      else {
+        map.addLayer({
+          id: 'route',
+          type: 'line',
+          source: {
+            type: 'geojson',
+            data: geojson
+          },
+          layout: {
+            'line-join': 'round',
+            'line-cap': 'round'
+          },
+          paint: {
+            'line-color': '#ff7f50',
+            'line-width': 5,
+            'line-opacity': 0.85
+          }
+        });
+      }
+      // add turn instructions here at the end!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+
+    map.on('load', () => {
+      // make an initial directions request that
+      // starts and ends at the same location
+      getRoute(start);
+
+      // Add starting point to the map
+      map.addLayer({
+        id: 'point',
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'Point',
+                  coordinates: start
+                }
+              }
+            ]
+          }
+        },
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#3887be'
+        }
+      });
+      map.on('click', (event) => {
+        const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
+        const end = {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'Point',
+                coordinates: coords
+              }
+            }
+          ]
+        };
+        if (map.getLayer('end')) {
+          map.getSource('end').setData(end);
+        } else {
+          map.addLayer({
+            id: 'end',
+            type: 'circle',
+            source: {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features: [
+                  {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: coords
+                    }
+                  }
+                ]
+              }
+            },
+            paint: {
+              'circle-radius': 7.5,
+              'circle-color': '#f30'
+            }
+          });
+        }
+        getRoute(coords);
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
