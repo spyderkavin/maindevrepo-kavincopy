@@ -3,10 +3,14 @@
 
 <head>
   <meta charset='utf-8' />
-  <title>MHS Directions</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"
+integrity="sha512-UoT/Ca6+2kRekuB1IDZgwtDt0ZUfsweWmyNhMqhG4hpnf7sFnhrLrO0zHJr2vFp7eZEvJ3FN58dhVx+YMJMt2A=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>MHS Digital Map Project v1.0</title>
   <style>
     body {
       margin: 0;
@@ -81,6 +85,7 @@
 </head>
 
 <body>
+  <div id="panorama-360-view"></div>
   <div id='map'></div>
   <div id="instructions" style="display: none;"></div>
   <button id="toggleStreetView",
@@ -265,7 +270,12 @@ label="instructions.innerHTML">Street View</button>
     });
 
   </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"
+integrity="sha512-EmZuy6vd0ns9wP+3l1hETKq/vNGELFRuLfazPnKKBbDpgZL0sZ7qyao5KgVbGJKOWlAFPNn6G9naB/8WnKN43Q=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- End Pannellum library -->
+<script src="street_view.js"></script>
 </body>
 
 </html>
