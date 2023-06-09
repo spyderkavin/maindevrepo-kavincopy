@@ -15,16 +15,19 @@
 
 
     
-    #map {
+    #map 
+    {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 100%;
     }
 
-    #instructions {
+    #instructions 
+    {
       position: absolute;
       margin: 1%;
+      right: 1%;
       width: 20%;
       top: 0;
       bottom: 20%;
@@ -35,18 +38,20 @@
       font-color: #00FF00;
     }
 
-    #toggleInstructions {
+    #toggleInstructions 
+    {
       position: fixed;
       top: 10px;
       right: 10px;
       z-index: 1;
           
     }
-    #eta {
+    #eta 
+    {
       position: absolute;
       margin: 1%;
       right: 1%;
-      width: 6%;
+      width: 10%;
       top: 60px;
       bottom: 50%;
       padding: 20px;
@@ -55,8 +60,16 @@
       font-family: sans-serif;
       font-color: #00FF00;
     }
+    #toggleStreetView 
+    {
+      position: fixed;
+      bottom: 30px;
+      right: 10px;
+      z-index: 1;
+    }
     
-    #logo {
+    #logo 
+    {
       right: 10%;
       top: 50%;
       background-color: #FFFFFF;
@@ -70,8 +83,10 @@
 <body>
   <div id='map'></div>
   <div id="instructions" style="display: none;"></div>
+  <button id="toggleStreetView",
+label="instructions.innerHTML">Street View</button>
   <button id="toggleInstructions", label="instructions.innerHTML">Toggle Directions</button>
-  <div id='eta', label="eta.innerHTML"></div>
+  <div id='eta', label="eta.innerHTML" style="display: show;"></div>
   <div id='logo'></div>
 
   <script>
@@ -93,7 +108,14 @@
     }
 
     toggleButton.addEventListener("click", () => {
+      //if(eta.style.display === "show"){
       instructions.style.display = instructions.style.display === "none" ? "block" : "none";
+      eta.style.display = eta.style.display === "none" ? "block" : "none";
+     // }
+      // else{
+      //   instructions.style.display = instructions.style.display === "show" ? "none" : "none";
+      //   eta.style.display = eta.style.display === "none" ? "show" : "none";
+      // }
     });
 
     
