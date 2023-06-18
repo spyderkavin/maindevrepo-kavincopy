@@ -4,17 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000"
-    android:backgroundTint="#FF0000"
-    android:foregroundTint="#FF0000"
     tools:context=".MainActivity">
 
 
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </WebView>
-
+        android:layout_height="match_parent" />
 </RelativeLayout>
