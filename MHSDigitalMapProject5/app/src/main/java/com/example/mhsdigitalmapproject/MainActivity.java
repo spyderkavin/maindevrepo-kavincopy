@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mywebView=(WebView) findViewById(R.id.webview);
         mywebView.setWebViewClient(new WebViewClient());
-        mywebView.loadUrl("https://dmpdigmapwdirections.cocoazi.repl.co");
+        mywebView.loadUrl("https://dmpdigmapphone.cocoazi.repl.co");
         WebSettings webSettings=mywebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         FirebaseMessaging.getInstance().subscribeToTopic("notifier")
