@@ -7,6 +7,7 @@
   <meta name='viewport' content='width=device-width, initial-scale=1' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"
 integrity="sha512-UoT/Ca6+2kRekuB1IDZgwtDt0ZUfsweWmyNhMqhG4hpnf7sFnhrLrO0zHJr2vFp7eZEvJ3FN58dhVx+YMJMt2A=="
@@ -25,69 +26,134 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
    <button id="toggleInstructions", label="instructions.innerHTML">Toggle Directions</button>
    <div id='eta', label="eta.innerHTML" style="display: show;"></div>
    <div id='logo'></div>
- <script>
+   <script>
+    let coord;
+   </script>
+  <script>
     
-   // Global variable to store the user's location
-let coord;
-const bounds = [
+    const options = {
+  enableHighAccuracy: true,
+  timeout: 1000,
+  maximumAge: 0,
+};
+
+
+function success(pos) {
+  //clearTimeout();
+  coord = pos.coords;
+  console.log("coordinates....",coord)
+  longitude = pos.coords.longitude
+  latitude = pos.coords.latitude
+  console.log("Your current position is:", longitude,latitude);
+  console.log(`Latitude : ${coord.latitude}`);
+  console.log(`Longitude: ${coord.longitude}`);
+  console.log(`More or less ${coord.accuracy} meters.`);
+  return coord = [coord.longitude,coord.latitude];
+  console.log("map.center",coord);
+  //return crd;
+  
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+ function getLocation(){
+ console.log("inside getLocation");
+  var promise = new Promise(function(resolve,reject){
+    return resolve(navigator.geolocation.getCurrentPosition(success, error, options))
+  })
+  console.log("promise............",promise);
+    // navigator.geolocation.getCurrentPosition(success, error, options)
+  
+}
+  </script>
+  <script>
+    const instructions = document.getElementById("instructions");
+    const toggleButton = document.getElementById("toggleInstructions");
+
+    function setInstructions(data) {
+      const steps = data.legs[0].steps;
+      let tripInstructions = "";
+      for (const step of steps) {
+        tripInstructions += `<li>${step.maneuver.instruction}</li>`;
+      }
+      instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 35
+      )} minutes  </strong></p><ol>${tripInstructions}</ol>`;
+      eta.innerHTML = `<p><strong>Trip duration: ${Math.floor(
+        data.duration / 35
+      )} minutes  </strong></p>`;
+    }
+
+    toggleButton.addEventListener("click", () => {
+      instructions.style.display = instructions.style.display === "none" ? "block" : "none";
+      eta.style.display = eta.style.display === "none" ? "block" : "none";
+    });
+
+    
+    
+  </script>
+  </div>
+
+  <script>
+    var longitude,latitude,val
+   getLocation()
+  // const promise1 = new Promise(()=>getLocation());
+  // console.log("promise....",promise1)
+   
+   //console.log("valuessssssss", result)
+  
+  //   navigator.geolocation.getCurrentPosition((pos) => {
+  //     crd = JSON.parse(JSON.stringify(pos));
+
+  //     crd1 = crd.longitude;
+  //     crd2 = crd.latitude;
+  //     console.log("coordinates..",crd1);
+  //     console.log("coordinates..",crd2);
+     
+  //   });
+    //
+  //  console.log("geolocation...........",coord.latitude);
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3B5ZGVya2F2aW4iLCJhIjoiY2xoazI5czc5MG5uZzNkdGxmMWpmbWs3NCJ9.m62PDpaOA-xh6g45wq9-PA';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg',
+      center: [-121.900686, 37.451186]  , // starting position
+      //center: [crd1, crd2],
+      zoom: 16.50
+    });
+ console.log("map,",map.center)
+    //set the bounds of the map
+    const bounds = [
      [-121.895543, 36.450507],
      [-115.303198, 37.550507]
    ];
+   //console.log("x values ------------",x);
+   
+  //  var bounds = [
+  //    [crd.longitude,crd.latitude],
+  //    [-115.303198, 37.550507]
+  //  ];
+   console.log("bounds", bounds);
+   
+   map.setMaxBounds(bounds);
 
-  function setInstructions(data) {
-  const steps = data.legs[0].steps;
-  let tripInstructions = "";
-  for (const step of steps) {
-    tripInstructions += `<li>${step.maneuver.instruction}</li>`;
-  }
-  instructions.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-    data.duration / 35
-  )} minutes  </strong></p><ol>${tripInstructions}</ol>`;
-  eta.innerHTML = `<p><strong>Trip duration: ${Math.floor(
-    data.duration / 35
-  )} minutes  </strong></p>`;
-}
-
-// Function to get the user's location
-function getUserLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(saveUserLocation);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
-}
-
-// Callback function to save the user's location
-function saveUserLocation(position) {
-  coord = [position.coords.longitude, position.coords.latitude];
-  generateMap();
-}
-
-
-// Function to generate the map
-function generateMap() {
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic3B5ZGVya2F2aW4iLCJhIjoiY2xoazI5czc5MG5uZzNkdGxmMWpmbWs3NCJ9.m62PDpaOA-xh6g45wq9-PA';
-  
-  // Create the map with the user's location as the center
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg',
-    center: coord,
-    zoom: 16.5
-  });
-
-  // Add additional map features or customization here
-  const instructions = document.getElementById("instructions");
-  const toggleButton = document.getElementById("toggleInstructions");
-
-  toggleButton.addEventListener("click", () => {
-  instructions.style.display = instructions.style.display === "none" ? "block" : "none";
-  eta.style.display = eta.style.display === "none" ? "block" : "none";
-
-  const start = [37.414492, -121.892117]
-  console.log("d.......", start)
-
-  async function getRoute(end) {
+    // an arbitrary start will always be the same
+    // only the end or destination will change
+    const start = [-121.900686, 37.451186];
+    // navigator.geolocation.getCurrentPosition((pos)=>{
+    //   crd1 = pos.coords.longitude;
+    //   crd2 = pos.coords.latitude;
+    //   console.log("coordinates..",crd);
+    //   const {GeolocationCoordinates} = crd;
+    //   console.log("crd...........",GeolocationCoordinates)
+      
+    // },(err)=>{console.log(err)},1000);
+    
+    // const start = [crd.longitude,crd.latitude];
+    // console.log("start", start[0]);
+    // create a function to make a directions request
+    async function getRoute(end) {
       // make a directions request using cycling profile
       // an arbitrary start will always be the same
       // only the end or destination will change
@@ -213,24 +279,13 @@ function generateMap() {
       });
     });
   
-});
-
-
-}
-
-
-// Call the function to get the user's location and generate the map
-getUserLocation();
-
-
-
-</script> 
+  </script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"
 integrity="sha512-EmZuy6vd0ns9wP+3l1hETKq/vNGELFRuLfazPnKKBbDpgZL0sZ7qyao5KgVbGJKOWlAFPNn6G9naB/8WnKN43Q=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- End Pannellum library -->
 <script src="street_view.js"></script>
-</script>
 </body>
+
 </html>
