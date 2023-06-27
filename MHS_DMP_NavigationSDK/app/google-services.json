@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "2891601311",
+    "firebase_url": "https://mhsdigitalmapproject-a26fe-default-rtdb.firebaseio.com",
+    "project_id": "mhsdigitalmapproject-a26fe",
+    "storage_bucket": "mhsdigitalmapproject-a26fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2891601311:android:e61ec682a8c117e02919aa",
+        "android_client_info": {
+          "package_name": "com.example.mhs_dmp_navigationsdk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2891601311-mkvpf8p4q5dtbtc2dirjdhfilag8344p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKbQbAqldtySWzfnc2riGlCOl68fqMR1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2891601311-mkvpf8p4q5dtbtc2dirjdhfilag8344p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2891601311:android:e880fbd77d0ad17e2919aa",
+        "android_client_info": {
+          "package_name": "com.example.mhsdigitalmapproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2891601311-mkvpf8p4q5dtbtc2dirjdhfilag8344p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKbQbAqldtySWzfnc2riGlCOl68fqMR1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2891601311-mkvpf8p4q5dtbtc2dirjdhfilag8344p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
