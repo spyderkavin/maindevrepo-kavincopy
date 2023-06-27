@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.example.mhs_dmp_navigationsdk'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.mhs_dmp_navigationsdk"
