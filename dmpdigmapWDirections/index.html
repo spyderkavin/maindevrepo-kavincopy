@@ -28,7 +28,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
  <script>
     
    // Global variable to store the user's location
-let coord;
+let coord = null;
+var start = coord
 const bounds = [
      [-121.895543, 36.450507],
      [-115.303198, 37.550507]
@@ -84,7 +85,7 @@ function generateMap() {
   instructions.style.display = instructions.style.display === "none" ? "block" : "none";
   eta.style.display = eta.style.display === "none" ? "block" : "none";
 
-  const start = [37.414492, -121.892117]
+  
   console.log("d.......", start)
 
   async function getRoute(end) {
@@ -155,7 +156,7 @@ function generateMap() {
                 properties: {},
                 geometry: {
                   type: 'Point',
-                  coordinates: start
+                  coordinates: coord
                 }
               }
             ]
