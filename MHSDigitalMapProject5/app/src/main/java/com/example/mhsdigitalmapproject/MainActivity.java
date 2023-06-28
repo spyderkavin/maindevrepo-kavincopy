@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.graphics.Bitmap;
+import android.util.Log;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,17 +32,8 @@ public class MainActivity extends AppCompatActivity {
         mywebView.loadUrl("https://dmpdigmapphone.cocoazi.repl.co");
         WebSettings webSettings=mywebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        FirebaseMessaging.getInstance().subscribeToTopic("notifier")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Done";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
 
-                    }
-                });
+
     }
 
     public class mywebClient extends WebViewClient {
