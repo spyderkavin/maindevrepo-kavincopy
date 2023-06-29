@@ -12,15 +12,7 @@
         android:layout_height="match_parent" >
     </WebView>
 
-    <ImageButton
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:background="#00FF0000"
-        android:contentDescription="A tiny Android icon"
-        android:src="@mipmap/ic_launcher_round"
-        android:translationX="400dp"
-        android:translationY="500dp"
-        app:tint="#FFFFFF" />
+
 
 
 </RelativeLayout>
