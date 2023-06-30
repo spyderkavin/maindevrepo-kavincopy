@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 // Create an instance of the Annotation API and get the PointAnnotationManager.
         bitmapFromDrawableRes(
             this@MainActivity,
-            R.drawable.ic_launcher_foreground
+            R.drawable.red_marker_foreground
         )?.let {
             val annotationApi = mapView?.annotations
             val pointAnnotationManager = annotationApi?.createPointAnnotationManager(mapView!!)
