@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         bitmapFromDrawableRes(
             this@MainActivity,
             R.drawable.red_marker_foreground
+//red_marker is a preset icon/drawing within the AndroidOS given
         )?.let {
             val annotationApi = mapView?.annotations
             val pointAnnotationManager = annotationApi?.createPointAnnotationManager(mapView!!)
