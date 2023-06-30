@@ -15,7 +15,6 @@ dependencyResolutionManagement {
             authentication {
                 basic(BasicAuthentication)
             }
-            maven { url 'https://mapbox.bintray.com/mapbox' }
             credentials {
                 // Do not change the username below.
                 // This should always be `mapbox` (not your username).
