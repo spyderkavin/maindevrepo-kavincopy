@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "com.mapbox.navigation:ui-dropin:2.14.0"
-    //implementation 'com.mapbox.maps:android:10.14.1'
+    ///implementation 'com.mapbox.maps:android:10.14.1'
     implementation "com.google.android.gms:play-services-location:21.0.1"
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.1' // Replace X.X.X with the latest version
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.11.0' // Replace X.X.X with the latest version
