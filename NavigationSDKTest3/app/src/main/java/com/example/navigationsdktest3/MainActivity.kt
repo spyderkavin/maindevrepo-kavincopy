@@ -1,30 +1,20 @@
 package com.example.navigationsdktest3
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-//import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.maps.MapView
-//import com.mapbox.maps.Style
+import com.mapbox.maps.Style
 
-
-//var mapView: MapView? = null
+var mapView: MapView? = null
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mapView: MapView
-    //private lateinit var map: MapboxMap
-
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapView = findViewById(R.id.mapView)
-        mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.mapbox_style))
-        
-
+        mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.mapbox_map_style))
     }
     @SuppressLint("Lifecycle")
     override fun onStart() {
@@ -49,7 +39,4 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         mapView?.onDestroy()
     }
-
-
 }
-
