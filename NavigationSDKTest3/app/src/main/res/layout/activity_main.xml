@@ -6,5 +6,14 @@
     android:layout_height="match_parent"
     mapbox:mapbox_cameraTargetLat="37.45077570472731"
     mapbox:mapbox_cameraTargetLng="-121.90207577343561"
-    mapbox:mapbox_cameraZoom="16.0"
-    />
+    mapbox:mapbox_cameraZoom="16.0">
+<!--
+    <Button
+        android:id="@+id/second_act_btn"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="DMP Website"
+        android:translationY="400dp"
+        android:onClick="updateText"
+        />-->
+</com.mapbox.maps.MapView>
