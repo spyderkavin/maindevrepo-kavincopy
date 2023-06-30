@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mapbox.maps.MapView
-//import com.mapbox.maps.Style
+import com.mapbox.maps.Style
 
 var mapView: MapView? = null
 
@@ -12,16 +12,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mapView = findViewById(R.id.mapView)
-        mapView?.getMapboxMap()?.loadStyleUri("mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg")
         setContentView(R.layout.activity_main)
+        mapView = findViewById(R.id.mapView)
+        mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.mapbox_map_style))
     }
     @SuppressLint("Lifecycle")
     override fun onStart() {
         super.onStart()
         mapView?.onStart()
     }
-
 
     @SuppressLint("Lifecycle")
     override fun onStop() {
