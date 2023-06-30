@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mapbox.maps.MapView
-import com.mapbox.maps.Style
+//import com.mapbox.maps.Style
 
 var mapView: MapView? = null
 
