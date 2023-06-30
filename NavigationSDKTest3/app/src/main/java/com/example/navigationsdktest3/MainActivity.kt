@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         mapView?.onStart()
     }
 
+
     @SuppressLint("Lifecycle")
     override fun onStop() {
         super.onStop()
