@@ -7,4 +7,11 @@
     mapbox:mapbox_cameraTargetLat="37.45077570472731"
     mapbox:mapbox_cameraTargetLng="-121.90207577343561"
     mapbox:mapbox_cameraZoom="16.0">
+
+    <Button
+        android:id="@+id/button"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </com.mapbox.maps.MapView>
