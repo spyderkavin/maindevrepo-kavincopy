@@ -6,26 +6,5 @@
     android:layout_height="match_parent"
     mapbox:mapbox_cameraTargetLat="37.45077570472731"
     mapbox:mapbox_cameraTargetLng="-121.90207577343561"
-    mapbox:mapbox_cameraZoom="16.0"
-    >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/button"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="250dp"
-            android:layout_marginBottom="675dp"
-            android:text="DMP Website"
-            mapbox:layout_constraintBottom_toBottomOf="parent"
-            mapbox:layout_constraintEnd_toEndOf="parent"
-            mapbox:layout_constraintHorizontal_bias="0.72"
-            mapbox:layout_constraintStart_toStartOf="parent"
-            mapbox:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    mapbox:mapbox_cameraZoom="16.0">
 </com.mapbox.maps.MapView>
