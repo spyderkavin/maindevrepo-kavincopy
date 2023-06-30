@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 // Set options for the resulting symbol layer.
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
 // Define a geographic coordinate.
-                .withPoint(Point.fromLngLat(37.45072620688836, -121.90228183104243))
+                .withPoint(Point.fromLngLat(-121.90228183104243, 37.45072620688836))
 // Specify the bitmap you assigned to the point annotation
 // The bitmap will be added to map style automatically.
                 .withIconImage(it)
