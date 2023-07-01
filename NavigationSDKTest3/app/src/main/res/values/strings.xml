@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">NavigationSDKTest3</string>
-    <string name="mapbox_access_token">pk.eyJ1Ijoic3B5ZGVya2F2aW4iLCJhIjoiY2xoazI5czc5MG5uZzNkdGxmMWpmbWs3NCJ9.m62PDpaOA-xh6g45wq9-PA</string>
-    <string name="mapbox_map_style">mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg</string>
-</resources>
