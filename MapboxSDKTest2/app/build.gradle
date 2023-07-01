@@ -65,4 +65,7 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    //Custon implementation. Above all of this is default
+    implementation 'com.mapbox.maps:android:10.14.1'
 }
