@@ -7,4 +7,19 @@
     mapbox:mapbox_cameraTargetLat="37.45077570472731"
     mapbox:mapbox_cameraTargetLng="-121.90207577343561"
     mapbox:mapbox_cameraZoom="16.0"
-    />
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="270dp"
+            android:text="Website"
+            mapbox:layout_constraintEnd_toEndOf="parent"
+            mapbox:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.mapbox.maps.MapView>
