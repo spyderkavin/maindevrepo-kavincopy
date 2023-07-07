@@ -11,7 +11,7 @@ import com.microsoft.appcenter.crashes.Crashes
 
 
 var mapView: MapView? = null
-
+//Timeline Reset
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
