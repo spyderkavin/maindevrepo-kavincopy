@@ -63,5 +63,5 @@ dependencies {
     androidTestImplementation libs.ui.test.junit4
     debugImplementation libs.ui.tooling
     debugImplementation libs.ui.test.manifest
-
+    implementation "com.mapbox.navigation:ui-dropin:2.14.1"
 }
