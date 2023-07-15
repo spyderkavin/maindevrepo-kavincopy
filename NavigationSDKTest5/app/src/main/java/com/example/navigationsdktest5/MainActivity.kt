@@ -10,13 +10,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (!MapboxNavigationApp.isSetup()) {
-            MapboxNavigationApp.setup {
-                NavigationOptions.Builder(context)
-                    .accessToken("YOUR_ACCESS_TOKEN")
-                    // additional options
-                    .build()
-            }
-        }
+
     }
 }
