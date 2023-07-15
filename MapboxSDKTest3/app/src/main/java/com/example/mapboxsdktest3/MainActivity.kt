@@ -3,8 +3,12 @@ package com.example.mapboxsdktest3
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
+import com.mapbox.maps.plugin.annotation.generated.CircleAnnotationOptions
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
+
 //import com.microsoft.appcenter.AppCenter
 //import com.microsoft.appcenter.analytics.Analytics
 //import com.microsoft.appcenter.crashes.Crashes
@@ -18,7 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapView = findViewById(R.id.mapView)
-        mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
+        mapView?.getMapboxMap()?.loadStyleUri(Style.SATELLITE)
+
 /*
         //App Center
         AppCenter.start(
@@ -27,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         )
 
  */
+
+
     }
     @SuppressLint("Lifecycle")
     override fun onStart() {
