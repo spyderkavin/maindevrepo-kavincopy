@@ -22,7 +22,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapView = findViewById(R.id.mapView)
-        mapView?.getMapboxMap()?.loadStyleUri(Style.SATELLITE)
+        //Style link commeneted here for conveinence purposes
+        //val STYLE_URL = "mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg"
+        mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.STYLE_URL))
 
 /*
         //App Center
