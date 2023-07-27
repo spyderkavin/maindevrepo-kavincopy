@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939919164113",
+    "project_id": "map-project-test1",
+    "storage_bucket": "map-project-test1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939919164113:android:b00712dbd5a4f91ea0bbf0",
+        "android_client_info": {
+          "package_name": "com.example.mapboxsdktest3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939919164113-c50nit79de4j3mghtetu2phm2jca2hem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKZIF91gjxAPBrL29qoyqAB61nBR-RhHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939919164113-c50nit79de4j3mghtetu2phm2jca2hem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
