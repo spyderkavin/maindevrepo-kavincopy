@@ -2,6 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MapboxSDKTest3" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">#640000</item>
     </style>
 </resources>
