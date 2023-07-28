@@ -2,8 +2,10 @@ package com.example.mapboxsdktest3
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.messaging.Constants.MessageNotificationKeys.TAG
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
@@ -25,24 +27,12 @@ class MainActivity : AppCompatActivity() {
         mapView = findViewById(R.id.mapView)
         //Style link commeneted here for conveinence purposes
         //val STYLE_URL = "mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg"
-
         mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.STYLE_URL))
 
-        //WebView
-        //val myWebView: WebView = findViewById(R.id.webview)
-        //myWebView.loadUrl("https://developer.android.com/develop/ui/views/layout/webapps/webview#kotlin")
-
-/*
-        //App Center
-        AppCenter.start(
-            application, "4c687564-51b0-4d7c-97bb-1c957b769ed9",
-            Analytics::class.java, Crashes::class.java
-        )
-
- */
 
 
     }
+
     @SuppressLint("Lifecycle")
     override fun onStart() {
         super.onStart()
