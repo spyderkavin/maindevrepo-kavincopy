@@ -17,14 +17,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
-import com.google.firebase.messaging.ktx.remoteMessage
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import java.util.concurrent.atomic.AtomicInteger
+
 
 
 var mapView: MapView? = null
