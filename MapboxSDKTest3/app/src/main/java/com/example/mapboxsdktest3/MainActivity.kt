@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         //val STYLE_URL = "mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg"
         mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.STYLE_URL))
     }
+
+
+
     // [START ask_post_notifications]
     // Declare the launcher at the top of your Activity/Fragment:
         private val requestPermissionLauncher = registerForActivityResult(
