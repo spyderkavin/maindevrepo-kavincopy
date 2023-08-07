@@ -48,4 +48,5 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-analytics:4.4.5"
     implementation "com.microsoft.appcenter:appcenter-crashes:4.4.5"
     //implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.2'
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }
