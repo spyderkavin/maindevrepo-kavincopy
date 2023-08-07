@@ -2,11 +2,12 @@ package com.example.mapboxsdktest3
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import com.mapbox.maps.MapView
+import androidx.appcompat.app.AppCompatActivity
+import com.mapbox.common.location.compat.permissions.PermissionsManager
 import android.util.Log
 import android.webkit.WebView
-import androidx.appcompat.app.AppCompatActivity
 import com.mapbox.geojson.Point
-import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
 import com.mapbox.maps.plugin.annotation.generated.CircleAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
@@ -20,15 +21,12 @@ import androidx.core.content.ContextCompat
 
 
 var mapView: MapView? = null
-//Timeline Reset
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapView = findViewById(R.id.mapView)
-        //Style link commeneted here for conveinence purposes
-        //val STYLE_URL = "mapbox://styles/spyderkavin/cli1anwx900v901poaa5e9cxg"
         mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.STYLE_URL))
     }
 
