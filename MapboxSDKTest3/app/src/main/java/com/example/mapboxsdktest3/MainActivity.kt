@@ -17,7 +17,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-
+import com.mapbox.maps.plugin.locationcomponent.location
 
 
 var mapView: MapView? = null
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mapView = findViewById(R.id.mapView)
         mapView?.getMapboxMap()?.loadStyleUri(getString(R.string.STYLE_URL))
+
     }
 
     @SuppressLint("Lifecycle")
